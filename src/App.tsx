@@ -9,6 +9,11 @@ function App() {
 
   return (
     <>
+      <main>
+        <h1>Colin Neary</h1>
+        <p>Computer Science Student</p>
+        <p>Welcome to my website!</p>
+      </main>
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
