@@ -5,7 +5,13 @@ import viteLogo from './assets/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0) 
+  
+  const handleClick = async () => {
+    const response = await fetch("https://w4j63guvitskyv6p3yd2ybupgu0aystb.lambda-url.us-east-2.on.aws/");
+    const data = await response.json();
+    setCount(data.count);
+  };
 
   return (
     <>
@@ -29,7 +35,7 @@ function App() {
         <button
           type="button"
           className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          onClick={handleClick}
         >
           Count is {count}
         </button>
