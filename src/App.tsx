@@ -6,9 +6,9 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0) 
-  
+
   const handleClick = async () => {
-    const response = await fetch("https://w4j63guvitskyv6p3yd2ybupgu0aystb.lambda-url.us-east-2.on.aws/");
+    const response = await fetch("https://s7v7ch54l4o6zmfqt7onm7o5mu0wqlcp.lambda-url.us-east-2.on.aws/");
     const data = await response.json();
     setCount(data.count);
   };
