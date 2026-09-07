@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
@@ -12,6 +12,12 @@ function App() {
     const data = await response.json();
     setCount(data.count);
   };
+
+  useEffect(() => {
+    fetch("https://hzerk5ka4ob26mzrbzk6cuqoyu0svnnn.lambda-url.us-east-2.on.aws/")
+      .then((response) => response.json())
+      .then((data) => setCount(data.count));
+  }, []);
 
   return (
     <>
