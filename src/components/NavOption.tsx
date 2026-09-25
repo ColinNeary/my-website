@@ -1,11 +1,11 @@
-
+import { Link } from 'react-router-dom'
 
 function NavOption(props: { label_text:string; destination:string }) {
 
     return (
         <div>
             <label>
-                <a href={props.destination}> {props.label_text} </a>
+                <Link to={props.destination}> {props.label_text} </Link>
             </label>
         </div>
     )
