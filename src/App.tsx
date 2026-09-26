@@ -4,13 +4,13 @@ import './App.css'
 import NavOption from './components/NavOption'
 import Home from './pages/Home'
 import Portfolio from './pages/Portfolio'
-import Journal from './pages/Journal'
+import Weeklies from './pages/Weeklies'
 
 function App() {
   const NavOptions = [
     {label_text:'Home', destination:'/'},
     {label_text:'Portfolio', destination:'/portfolio'},
-    {label_text:'Journal', destination:'/journal'}
+    {label_text:'Weeklies', destination:'/weeklies'}
    ]
 
   return (
@@ -33,7 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/journal" element={<Journal />} />
+          <Route path="/weeklies" element={<Weeklies />} />
         </Routes>
       </main>
 
