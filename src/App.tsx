@@ -4,6 +4,7 @@ import './App.css'
 import NavOption from './components/NavOption'
 import Home from './pages/Home'
 import Portfolio from './pages/Portfolio'
+import Game from './pages/Game'
 import Weeklies from './pages/Weeklies'
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/:slug" element={<Game />} />
           <Route path="/weeklies" element={<Weeklies />} />
         </Routes>
       </main>
