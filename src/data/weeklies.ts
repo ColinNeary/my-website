@@ -9,6 +9,13 @@ export interface WeeklyEntry {
 // Most recent week first. Add new weeks to the top of this array.
 export const weeklies: WeeklyEntry[] = [
   {
+    date: '2026-10-13',
+    youtubeId: 'RVcPG0xvQAs',
+    videoCaption: 'Good random knowledge. 8/10',
+    reelId: 'DduwsLcxs5j',
+    reelCaption: 'Good tomfoolery. 7/10',
+  },
+  {
     date: '2026-09-26',
     youtubeId: 'xQkibiaxP0I',
     videoCaption: 'Path of Exile 1 character build that showcases an extremely niche and powerful interaction. 9.5/10 video',
