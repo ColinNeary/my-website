@@ -1,75 +1,58 @@
-# React + TypeScript + Vite
+# colinneary.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal website and portfolio, built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Hosting
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Static site in the S3 bucket `colinneary.com`, served through CloudFront (`E2TBX22JE1WK98`)
+- Domain managed in Cloudflare
+- The home page counter uses two AWS Lambda function URLs (read and increment) backed by DynamoDB, in `us-east-2`. The Lambda code lives in the AWS console.
 
-## React Compiler
+## Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Requires Node 20.19+ (or 22.12+).
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Adding content
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Weeklies:** add a new entry to the top of `src/data/weeklies.ts`
+- **Games:** add an entry to `src/data/games.ts`. Put the web build in `public/games/<slug>/` and set `buildUrl`. Export Godot builds with Thread Support off so they run without extra headers.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+## Deploying
+
+```bash
+npm run deploy -- --dry-run   # build and show what would change
+npm run deploy                # build, upload to S3, and invalidate CloudFront
+```
+
+### One-time setup on a new computer
+
+1. Install the AWS CLI: `winget install Amazon.AWSCLI`
+2. Run `aws configure` with an access key for an IAM user that has this policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::colinneary.com"
     },
-  },
-])
-
+    {
+      "Effect": "Allow",
+      "Action": ["s3:PutObject", "s3:DeleteObject"],
+      "Resource": "arn:aws:s3:::colinneary.com/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "cloudfront:CreateInvalidation",
+      "Resource": "arn:aws:cloudfront::*:distribution/E2TBX22JE1WK98"
+    }
+  ]
+}
 ```
