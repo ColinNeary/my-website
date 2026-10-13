@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function Home() {
   const [count, setCount] = useState(0)
@@ -19,12 +20,22 @@ function Home() {
     <>
       <section id="hero">
         <h1>Colin Neary</h1>
-        <p>Computer Science Student</p>
-        <p>Welcome to my website!</p>
+        <p className="tagline">Computer Science Student at UT Dallas</p>
+        <p className="about">
+          I'm a Computer Science student at UT Dallas, graduating in December 2026. I've been making
+          games for years, most recently leading development on Skribble 'N Skram, a commercial indie
+          game built in Godot. I also love optimizing programs and building tools, especially databases
+          and the APIs around them. This site is where I'm teaching myself web development with React,
+          TypeScript, and AWS.
+        </p>
+        <div className="hero-actions">
+          <Link to="/portfolio" className="button primary">View portfolio</Link>
+          <Link to="/weeklies" className="button">This week's picks</Link>
+        </div>
       </section>
 
-      <section id="body">
-        <h2>Click the button!</h2>
+      <section id="counter">
+        <p>Click the button!</p>
         <button
           type="button"
           className="counter"

@@ -12,8 +12,8 @@ export interface Game {
 export const games: Game[] = [
   {
     slug: 'skribble-n-skram',
-    title: 'Skribble N Skram',
-    description: 'Description coming soon.',
+    title: "Skribble 'N Skram",
+    description: 'A commercial indie game built in Godot with C# and the Steamworks API. I led development and built the enemy AI using behavior trees and state machines.',
     status: 'In development',
     // buildUrl: '/games/skribble-n-skram/index.html',
   },
