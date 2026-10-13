@@ -1,0 +1,131 @@
+#weeklies {
+  padding: 0 24px 48px;
+  @media (max-width: 1024px) {
+    padding: 0 16px 32px;
+  }
+}
+
+.weeklies-intro {
+  margin-bottom: 32px;
+}
+
+.week-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: left;
+  @media (max-width: 1024px) {
+    padding: 16px;
+  }
+}
+
+.week-card.featured {
+  border: 2px solid var(--accent-border);
+  background: var(--accent-bg);
+  box-shadow: var(--shadow);
+}
+
+.week-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  time {
+    color: var(--text-h);
+    font-weight: 500;
+  }
+}
+
+.featured .week-header time {
+  font-size: 20px;
+}
+
+.badge {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--bg);
+  background: var(--accent);
+}
+
+.week-picks {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 24px;
+  align-items: start;
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pick {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+
+  figcaption {
+    font-size: 16px;
+  }
+}
+
+.pick-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+.youtube-embed,
+.instagram-embed {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  background: var(--code-bg);
+}
+
+.youtube-embed {
+  aspect-ratio: 16 / 9;
+}
+
+.instagram-embed {
+  max-width: 400px;
+  height: 480px;
+}
+
+.archive-heading {
+  margin: 56px 0 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.archive {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.week-card.archived {
+  .week-picks {
+    grid-template-columns: 1fr 1fr;
+    @media (max-width: 760px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .instagram-embed {
+    max-width: 320px;
+    height: 400px;
+  }
+
+  figcaption {
+    font-size: 15px;
+  }
+}

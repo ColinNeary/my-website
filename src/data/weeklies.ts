@@ -12,7 +12,7 @@ export const weeklies: WeeklyEntry[] = [
     date: '2026-10-13',
     youtubeId: 'RVcPG0xvQAs',
     videoCaption: 'Good random knowledge. 8/10',
-    reelId: 'DduwsLcxs5j',
+    reelId: 'Dcg2nMLxYS7',
     reelCaption: 'Good tomfoolery. 7/10',
   },
   {
