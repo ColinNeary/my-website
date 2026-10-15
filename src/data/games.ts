@@ -21,7 +21,7 @@ export const games: Game[] = [
   {
     slug: 'cat-ball',
     title: 'Cat ball and the ball is a cat',
-    description: 'Commercial indie game built in Godot using GDScript. I implemented a perk-unlock system, UI/UX design, and theory-crafted items and systems.',
+    description: 'Commercial indie game built in Godot using GDScript. I implemented a perk-unlock system, UI/UX design, and theory-crafted items and systems. Some dev controls: 1- adds 5 seconds, 2- skips to shop, 3- controls catball, 5- adds 5 coins, SPACE- skips intro.',
     status: 'Finished alpha',
     buildUrl: '/games/cat-ball/index.html',
     thumbnail: '/images/cat-ball.png',
