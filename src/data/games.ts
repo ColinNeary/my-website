@@ -16,5 +16,6 @@ export const games: Game[] = [
     description: 'A commercial indie game built in Godot with gdscript and the Steamworks API. I led development and built the enemy AI using behavior trees and state machines.',
     status: 'Finished alpha, discontinued',
     buildUrl: '/games/skribble-n-skram/index.html',
+    thumbnail: '/images/skribble-n-skram.png',
   },
 ]
