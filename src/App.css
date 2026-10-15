@@ -179,7 +179,6 @@ main {
 }
 
 .tagline {
-  margin-top: -16px;
   font-size: 20px;
   color: var(--accent);
 }

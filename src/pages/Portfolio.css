@@ -85,10 +85,6 @@
   color: var(--accent);
 }
 
-#game h1 {
-  margin-bottom: 12px;
-}
-
 .game-stage {
   margin: 24px 0 16px;
 }

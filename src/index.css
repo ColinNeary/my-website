@@ -90,14 +90,21 @@ h2 {
   color: var(--text-h);
 }
 
+/* Without its own line-height, h1 inherits the root's (~26px) and its text overflows its box,
+   which is why subtitles needed hand-tuned offsets. */
 h1 {
   font-size: 56px;
+  line-height: 118%;
   letter-spacing: -1.68px;
-  margin: 32px 0;
+  margin: 24px 0 16px;
   @media (max-width: 1024px) {
     font-size: 36px;
-    margin: 20px 0;
+    margin: 16px 0 12px;
   }
+}
+/* A subtitle right under the title (tagline, status pill) sits closer than body text does */
+h1:has(+ .tagline, + .status) {
+  margin-bottom: 8px;
 }
 h2 {
   font-size: 24px;
