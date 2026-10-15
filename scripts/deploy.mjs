@@ -6,6 +6,7 @@
 // Requires the AWS CLI, configured with credentials that can write to the bucket
 // and create CloudFront invalidations (see README).
 
+import { existsSync, readdirSync, statSync } from 'node:fs'
 import { execSync } from 'node:child_process'
 
 const BUCKET = 'colinneary.com'
@@ -46,7 +47,20 @@ run(`aws s3 sync dist/assets s3://${BUCKET}/assets --cache-control "public,max-a
 
 // Everything else (index.html, favicon, game builds) must be re-checked on every visit so updates show up.
 // --delete removes files from the bucket that are no longer in dist/.
-run(`aws s3 sync dist s3://${BUCKET} --exclude "assets/*" --cache-control "no-cache" --delete${dryFlag}`)
+run(`aws s3 sync dist s3://${BUCKET} --exclude "assets/*" --exclude "games/*" --cache-control "no-cache" --delete${dryFlag}`)
+
+// Game builds live outside git (public/games/ is ignored), so they're uploaded separately.
+// Each game folder is synced on its own, so --delete only touches games that exist locally.
+if (existsSync('dist/games')) {
+  for (const slug of readdirSync('dist/games')) {
+    const local = `dist/games/${slug}`
+    if (!statSync(local).isDirectory()) continue
+    const remote = `s3://${BUCKET}/games/${slug}`
+    // .wasm first so it is stored as application/wasm; the second sync then skips those files as unchanged
+    run(`aws s3 sync ${local} ${remote} --exclude "*" --include "*.wasm" --content-type application/wasm --cache-control "no-cache"${dryFlag}`)
+    run(`aws s3 sync ${local} ${remote} --cache-control "no-cache" --delete${dryFlag}`)
+  }
+}
 
 // Remove old fingerprinted assets last, after the new index.html points at the new ones.
 run(`aws s3 sync dist/assets s3://${BUCKET}/assets --delete${dryFlag}`)

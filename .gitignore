@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Game builds are large and re-exported often; they're uploaded by deploy.mjs instead
+public/games/
