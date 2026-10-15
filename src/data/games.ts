@@ -18,4 +18,12 @@ export const games: Game[] = [
     buildUrl: '/games/skribble-n-skram/index.html',
     thumbnail: '/images/skribble-n-skram.png',
   },
+  {
+    slug: 'cat-ball',
+    title: 'Cat ball and the ball is a cat',
+    description: 'Commercial indie game built in Godot using GDScript. I implemented a perk-unlock system, UI/UX design, and theory-crafted items and systems.',
+    status: 'Finished alpha',
+    buildUrl: '/games/cat-ball/index.html',
+    thumbnail: '/images/cat-ball.png',
+  },
 ]
