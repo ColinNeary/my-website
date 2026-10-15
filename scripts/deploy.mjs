@@ -50,10 +50,13 @@ run(`aws s3 sync dist/assets s3://${BUCKET}/assets --cache-control "public,max-a
 run(`aws s3 sync dist s3://${BUCKET} --exclude "assets/*" --exclude "games/*" --cache-control "no-cache" --delete${dryFlag}`)
 
 // Game builds live outside git (public/games/ is ignored), so they're uploaded separately.
+// They sync from public/games/, not dist/games/: vite copies public/ into dist/ with fresh timestamps on
+// every build, which made `aws s3 sync` re-upload every game file each time. public/ timestamps only change
+// when you copy in a new export, so unchanged files are skipped.
 // Each game folder is synced on its own, so --delete only touches games that exist locally.
-if (existsSync('dist/games')) {
-  for (const slug of readdirSync('dist/games')) {
-    const local = `dist/games/${slug}`
+if (existsSync('public/games')) {
+  for (const slug of readdirSync('public/games')) {
+    const local = `public/games/${slug}`
     if (!statSync(local).isDirectory()) continue
     const remote = `s3://${BUCKET}/games/${slug}`
     // .wasm first so it is stored as application/wasm; the second sync then skips those files as unchanged
