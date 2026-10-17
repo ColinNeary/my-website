@@ -36,7 +36,7 @@ export const games: Game[] = [
   {
     slug: 'text-generator-ai',
     title: 'Text Generator AI',
-    description: "A JavaFX desktop app backed by MySQL that imports text files and builds word and word-pair statistics for autocomplete and text generation. Built with a team of six for UT Dallas's senior project class. I designed the database schema and built the text-parsing import that fills it, and helped refactor and optimize the code.",
+    description: "A JavaFX desktop app backed by MySQL that imports text files and uses word and word-pair statistics for autocomplete and text generation (Markov chains and beam search). Built with a team of six for UT Dallas's senior project class. I designed the MySQL schema the whole app runs on, covering word counts and word-pair frequencies, and wrote the text-parsing code that populated it.",
     status: 'Senior project, Fall 2025',
     kind: 'software',
     tech: ['Java', 'JavaFX', 'MySQL', 'Maven'],
