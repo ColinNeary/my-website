@@ -5,8 +5,8 @@ import './Portfolio.css'
 function Portfolio() {
   return (
     <section id="portfolio">
-      <h1>Portfolio</h1>
-      <p className="portfolio-intro">Games I've made. Most are still works in progress, so expect rough edges.</p>
+      <h1>Projects</h1>
+      <p className="portfolio-intro">Projects I've made or helped make. Most are unfinished so expect rough edges.</p>
 
       <div className="game-grid">
         {games.map((game) => (

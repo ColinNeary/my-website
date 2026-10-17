@@ -109,3 +109,37 @@
   max-width: 720px;
   margin: 0 auto;
 }
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    font-size: 13px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    color: var(--text-h);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+  }
+}
+
+.game-screenshots {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 720px;
+  margin: 24px auto 0;
+
+  img {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+}

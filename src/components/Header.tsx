@@ -3,7 +3,7 @@ import ThemeMenu from './ThemeMenu'
 
 const navLinks = [
   { label: 'Home', to: '/' },
-  { label: 'Portfolio', to: '/portfolio' },
+  { label: 'Projects', to: '/portfolio' },
   { label: 'Weeklies', to: '/weeklies' },
 ]
 

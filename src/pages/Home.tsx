@@ -29,7 +29,7 @@ function Home() {
           TypeScript, and AWS.
         </p>
         <div className="hero-actions">
-          <Link to="/portfolio" className="button primary">View portfolio</Link>
+          <Link to="/portfolio" className="button primary">View projects</Link>
           <Link to="/weeklies" className="button">This week's picks</Link>
         </div>
       </section>
