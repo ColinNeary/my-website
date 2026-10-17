@@ -14,6 +14,8 @@ export interface Game {
   tech?: string[]
   // Extra images for the project page, served from public/
   screenshots?: string[]
+  // An interactive demo built into the site, shown above the description (see src/demos/)
+  demo?: 'text-generator'
 }
 
 export const games: Game[] = [
@@ -40,5 +42,6 @@ export const games: Game[] = [
     status: 'Senior project, Fall 2025',
     kind: 'software',
     tech: ['Java', 'JavaFX', 'MySQL', 'Maven'],
+    demo: 'text-generator',
   },
 ]

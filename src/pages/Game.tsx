@@ -1,7 +1,10 @@
-import { useRef } from 'react'
+import { lazy, Suspense, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { games } from '../data/games'
 import './Portfolio.css'
+
+// Loaded only when a project page needs it, so the demo's code isn't in everyone's first download
+const TextGeneratorDemo = lazy(() => import('../demos/TextGeneratorDemo'))
 
 function Game() {
   const { slug } = useParams()
@@ -28,6 +31,20 @@ function Game() {
             <li key={tech}>{tech}</li>
           ))}
         </ul>
+      )}
+
+      {game.demo === 'text-generator' && (
+        <div className="demo-section">
+          <h2>Try it</h2>
+          <p className="demo-intro">
+            A re-creation of the app's main features that runs entirely in your browser. The real app is a JavaFX
+            desktop program backed by MySQL; this version keeps its data in memory instead, and it's a fresh
+            implementation, not my teammates' code.
+          </p>
+          <Suspense fallback={<p>Loading the demo...</p>}>
+            <TextGeneratorDemo />
+          </Suspense>
+        </div>
       )}
 
       {game.kind !== 'software' && (
