@@ -95,6 +95,50 @@
   aspect-ratio: 16 / 9;
 }
 
+/* Stands in for the embed when a video's owner has disabled embedding. YouTube's 4:3 thumbnail has black
+   bars top and bottom; cropping it to 16:9 removes exactly those. */
+.youtube-link {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--code-bg);
+  text-decoration: none;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 28px 12px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    text-align: left;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  }
+  &:hover img {
+    transform: scale(1.03);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &:hover img {
+      transform: none;
+    }
+  }
+}
+
 .instagram-embed {
   max-width: 400px;
   height: 480px;

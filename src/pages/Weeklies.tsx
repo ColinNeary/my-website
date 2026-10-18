@@ -24,6 +24,21 @@ function YouTubeEmbed({ videoId, lazy }: { videoId: string; lazy?: boolean }) {
   )
 }
 
+// For videos that can't be embedded: the thumbnail, linking out to YouTube
+function YouTubeLink({ videoId }: { videoId: string }) {
+  return (
+    <a
+      className="youtube-link"
+      href={`https://www.youtube.com/watch?v=${videoId}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`} alt="" loading="lazy" />
+      <span>Watch on YouTube ↗</span>
+    </a>
+  )
+}
+
 function InstagramEmbed({ reelId, lazy }: { reelId: string; lazy?: boolean }) {
   return (
     <iframe
@@ -42,7 +57,11 @@ function WeekPicks({ week, lazy }: { week: WeeklyEntry; lazy?: boolean }) {
     <div className="week-picks">
       <figure className="pick pick-video">
         <span className="pick-label">YouTube Video</span>
-        <YouTubeEmbed videoId={week.youtubeId} lazy={lazy} />
+        {week.youtubeEmbeddable === false ? (
+          <YouTubeLink videoId={week.youtubeId} />
+        ) : (
+          <YouTubeEmbed videoId={week.youtubeId} lazy={lazy} />
+        )}
         <figcaption>{week.videoCaption}</figcaption>
       </figure>
       <figure className="pick pick-reel">

@@ -1,6 +1,9 @@
 export interface WeeklyEntry {
   date: string
   youtubeId: string
+  // Set to false when the video's owner has disabled embedding (YouTube shows "Video unavailable");
+  // the card then shows the video's thumbnail with a link out to YouTube instead
+  youtubeEmbeddable?: boolean
   videoCaption: string
   reelId: string
   reelCaption: string
@@ -8,6 +11,14 @@ export interface WeeklyEntry {
 
 // Most recent week first. Add new weeks to the top of this array.
 export const weeklies: WeeklyEntry[] = [
+  {
+    date: '2026-10-17',
+    youtubeId: 'a4vfv4EMgYs',
+    youtubeEmbeddable: false,
+    videoCaption: 'Bit of a cringe concept usually, but I like how it was done. Good analogy. 8/10',
+    reelId: 'DefXUx8pGnw',
+    reelCaption: 'I like this one particularly. 9/10',
+  },
   {
     date: '2026-10-13',
     youtubeId: 'RVcPG0xvQAs',
