@@ -62,6 +62,7 @@ export const projects: Project[] = [
     description: "My Senior Project course final. A JavaFX desktop app backed by MySQL that imports text files and uses word and word-pair statistics for autocomplete and text generation (Markov chains and beam search). Built with a team of six for my UT Dallas senior project class. I designed the MySQL schema the whole app runs on, covering word counts and word-pair frequencies, and wrote the text-parsing code that populated it.",
     status: 'Senior project, Fall 2025',
     kind: 'software',
+    thumbnail: '/images/text-generator-ai.png',
     tech: ['Java', 'JavaFX', 'MySQL', 'Maven', 'Python'],
     demo: 'text-generator',
   },
