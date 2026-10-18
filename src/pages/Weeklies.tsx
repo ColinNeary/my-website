@@ -60,7 +60,7 @@ function Weeklies() {
   return (
     <section id="weeklies">
       <h1>Weeklies</h1>
-      <p className="weeklies-intro">My favorite YouTube video and Instagram reel each week.</p>
+      <p className="weeklies-intro">Definitive best YouTube video and Instagram reel of each week</p>
 
       <article className="week-card featured">
         <header className="week-header">

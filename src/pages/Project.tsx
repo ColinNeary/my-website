@@ -1,19 +1,19 @@
 import { lazy, Suspense, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { games } from '../data/games'
-import './Portfolio.css'
+import { projects } from '../data/projects'
+import './Projects.css'
 
 // Loaded only when a project page needs it, so the demo's code isn't in everyone's first download
 const TextGeneratorDemo = lazy(() => import('../demos/TextGeneratorDemo'))
 
-function Game() {
+function Project() {
   const { slug } = useParams()
-  const game = games.find((g) => g.slug === slug)
+  const project = projects.find((p) => p.slug === slug)
   const frameRef = useRef<HTMLIFrameElement>(null)
 
-  if (!game) {
+  if (!project) {
     return (
-      <section id="game">
+      <section id="project">
         <h1>Project not found</h1>
         <Link to="/portfolio">Back to Projects</Link>
       </section>
@@ -21,19 +21,19 @@ function Game() {
   }
 
   return (
-    <section id="game">
+    <section id="project">
       <Link to="/portfolio" className="back-link">← Back to Projects</Link>
-      <h1>{game.title}</h1>
-      <span className="status">{game.status}</span>
-      {game.tech && (
+      <h1>{project.title}</h1>
+      <span className="status">{project.status}</span>
+      {project.tech && (
         <ul className="tech-list" aria-label="Built with">
-          {game.tech.map((tech) => (
+          {project.tech.map((tech) => (
             <li key={tech}>{tech}</li>
           ))}
         </ul>
       )}
 
-      {game.demo === 'text-generator' && (
+      {project.demo === 'text-generator' && (
         <div className="demo-section">
           <h2>Try it</h2>
           <p className="demo-intro">
@@ -47,14 +47,14 @@ function Game() {
         </div>
       )}
 
-      {game.kind !== 'software' && (
+      {project.kind !== 'software' && (
         <div className="game-stage">
-          {game.buildUrl ? (
+          {project.buildUrl ? (
             <iframe
               ref={frameRef}
               className="game-frame"
-              src={game.buildUrl}
-              title={game.title}
+              src={project.buildUrl}
+              title={project.title}
               allow="autoplay; fullscreen; gamepad"
               allowFullScreen
             ></iframe>
@@ -64,26 +64,26 @@ function Game() {
         </div>
       )}
 
-      {game.buildUrl && (
+      {project.buildUrl && (
         <button type="button" className="counter" onClick={() => frameRef.current?.requestFullscreen()}>
           Fullscreen
         </button>
       )}
 
-      {game.screenshots && (
-        <div className="game-screenshots">
-          {game.screenshots.map((src) => (
-            <img key={src} src={src} alt={`${game.title} screenshot`} loading="lazy" />
+      {project.screenshots && (
+        <div className="project-screenshots">
+          {project.screenshots.map((src) => (
+            <img key={src} src={src} alt={`${project.title} screenshot`} loading="lazy" />
           ))}
         </div>
       )}
 
-      <div className="game-about">
+      <div className="project-about">
         <h2>About</h2>
-        <p>{game.description}</p>
+        <p>{project.description}</p>
       </div>
     </section>
   )
 }
 
-export default Game
+export default Project

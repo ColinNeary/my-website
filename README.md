@@ -20,7 +20,7 @@ npm run dev
 ## Adding content
 
 - **Weeklies:** add a new entry to the top of `src/data/weeklies.ts`
-- **Games:** add an entry to `src/data/games.ts`. Put the web build in `public/games/<slug>/` and set `buildUrl`. Export Godot builds with Thread Support off so they run without extra headers.
+- **Projects:** add an entry to `src/data/projects.ts` (each gets a card and its own page at `/portfolio/<slug>`). For a game, put the web build in `public/games/<slug>/` and set `buildUrl`. Export Godot builds with Thread Support off so they run without extra headers.
 
 ## Deploying
 

@@ -20,13 +20,11 @@ function Home() {
     <>
       <section id="hero">
         <h1>Colin Neary</h1>
-        <p className="tagline">Computer Science Student at UT Dallas</p>
+        <p className="tagline">Programming extraordinaire</p>
         <p className="about">
-          I'm a Computer Science student at UT Dallas, graduating in December 2026. I've been making
-          games for years, most recently leading development on Skribble 'N Skram, a commercial indie
-          game built in Godot. I also love optimizing programs and building tools, especially databases
-          and the APIs around them. This site is where I'm teaching myself web development with React,
-          TypeScript, and AWS.
+          Hello! I am a Computer Science student at UT Dallas, graduating in December 2026. I've been creating software things
+          for many years now and wanted a place to showcase my work. This website is still a work in progress, so expect things 
+          to improve over time. If you want to get in touch with me, please feel free to reach out using the links below!
         </p>
         <div className="hero-actions">
           <Link to="/portfolio" className="button primary">View projects</Link>
