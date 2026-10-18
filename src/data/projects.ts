@@ -1,3 +1,9 @@
+// One key (or button) and what it does, shown as a key cap next to its description on the project page
+export interface ControlHint {
+  key: string
+  action: string
+}
+
 // Everything on the Projects page: games, software, anything else. Each entry becomes a card on /portfolio
 // and its own page at /portfolio/<slug>. (The URL is still /portfolio so older links keep working.)
 export interface Project {
@@ -19,6 +25,8 @@ export interface Project {
   screenshots?: string[]
   // An interactive demo built into the site, shown above the description (see src/demos/)
   demo?: 'text-generator'
+  // A titled list of keys and what they do, shown under the description (e.g. a game's dev shortcuts)
+  controls?: { title: string; hints: ControlHint[] }
 }
 
 export const projects: Project[] = [
@@ -33,10 +41,20 @@ export const projects: Project[] = [
   {
     slug: 'cat-ball',
     title: 'Cat ball and the ball is a cat',
-    description: 'This project was our shot at making a small scale game for a quick commercial release. This game was also built in Godot using GDScript. I implemented a perk-unlock system, UI/UX design, and theory-crafted items and systems. Some dev controls: \n1- adds 5 seconds, \n2- skips to shop, \n3- controls catball, \n5- adds 5 coins, SPACE- skips intro.',
+    description: 'This project was our shot at making a small scale game for a quick commercial release. This game was also built in Godot using GDScript. I implemented a perk-unlock system, UI/UX design, and theory-crafted items and systems.',
     status: 'Finished alpha',
     buildUrl: '/games/cat-ball/index.html',
     thumbnail: '/images/cat-ball.png',
+    controls: {
+      title: 'Dev controls',
+      hints: [
+        { key: '1', action: 'Adds 5 seconds' },
+        { key: '2', action: 'Skips to the shop' },
+        { key: '3', action: 'Controls the cat ball' },
+        { key: '5', action: 'Adds 5 coins' },
+        { key: 'Space', action: 'Skips the intro' },
+      ],
+    },
   },
   {
     slug: 'text-generator-ai',

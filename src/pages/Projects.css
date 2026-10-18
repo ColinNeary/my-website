@@ -155,3 +155,46 @@
   margin: 0 auto 16px;
   font-size: 16px;
 }
+
+/* A list of keys and what they do; each key is drawn as a small key cap */
+.project-controls {
+  margin-top: 20px;
+
+  h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-h);
+  }
+
+  ul {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Keys sit in a fixed-width column so every description starts at the same place */
+  li {
+    display: grid;
+    grid-template-columns: 4.5em 1fr;
+    align-items: center;
+    gap: 12px;
+  }
+
+  kbd {
+    justify-self: start;
+    min-width: 2.4em;
+    box-sizing: border-box;
+    padding: 2px 8px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--text-h);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-bottom-width: 3px;
+    border-radius: 6px;
+  }
+}

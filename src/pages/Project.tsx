@@ -81,6 +81,20 @@ function Project() {
       <div className="project-about">
         <h2>About</h2>
         <p>{project.description}</p>
+
+        {project.controls && (
+          <div className="project-controls">
+            <h3>{project.controls.title}</h3>
+            <ul>
+              {project.controls.hints.map(({ key, action }) => (
+                <li key={key}>
+                  <kbd>{key}</kbd>
+                  <span>{action}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
   )
