@@ -175,7 +175,8 @@
     list-style: none;
   }
 
-  /* Keys sit in a fixed-width column so every description starts at the same place */
+  /* Keys sit right-aligned in a fixed-width column, flush against their descriptions,
+     and every description is left-aligned from the same x position */
   li {
     display: grid;
     grid-template-columns: 4.5em 1fr;
@@ -184,7 +185,7 @@
   }
 
   kbd {
-    justify-self: start;
+    justify-self: end;
     min-width: 2.4em;
     box-sizing: border-box;
     padding: 2px 8px;
