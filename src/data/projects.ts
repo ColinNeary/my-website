@@ -19,6 +19,10 @@ export interface Project {
   buildUrl?: string
   // Card image on the Projects page (shown at 4:3), served from public/
   thumbnail?: string
+  // A short muted loop (.mp4 or .webm in public/previews/) that plays over the thumbnail while the card is
+  // hovered or focused. It isn't downloaded until someone first hovers, and it never plays for visitors who
+  // ask their system to reduce motion. Record it at 4:3 (about 640x480), 3 to 5 seconds, under 1 MB.
+  preview?: string
   // Technologies used, shown as small tags on the project page
   tech?: string[]
   // Extra images for the project page, served from public/

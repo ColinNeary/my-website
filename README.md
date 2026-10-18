@@ -21,6 +21,11 @@ npm run dev
 
 - **Weeklies:** add a new entry to the top of `src/data/weeklies.ts`
 - **Projects:** add an entry to `src/data/projects.ts` (each gets a card and its own page at `/portfolio/<slug>`). For a game, put the web build in `public/games/<slug>/` and set `buildUrl`. Export Godot builds with Thread Support off so they run without extra headers.
+- **Hover clip (optional):** a muted 3 to 5 second loop that plays over a project's thumbnail while its card is hovered. Save it as `public/previews/<slug>.mp4` (or `.webm`) and set `preview: '/previews/<slug>.mp4'` on the project. It isn't downloaded until someone first hovers the card, and it never plays for visitors who ask their system to reduce motion. To record a clip, use Xbox Game Bar (Win+G) on Windows or Shift+Ctrl+Alt+R on Ubuntu, then shrink it with [ffmpeg](https://ffmpeg.org/) (the card is 4:3, so 640x480 is plenty):
+
+  ```bash
+  ffmpeg -i raw.mp4 -t 5 -an -vf "scale=640:480:force_original_aspect_ratio=increase,crop=640:480,fps=24" -c:v libx264 -crf 28 -pix_fmt yuv420p -movflags +faststart public/previews/<slug>.mp4
+  ```
 
 ## Deploying
 

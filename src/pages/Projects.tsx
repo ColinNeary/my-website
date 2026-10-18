@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import ProjectCard from '../components/ProjectCard'
 import { projects } from '../data/projects'
 import './Projects.css'
 
@@ -10,18 +10,7 @@ function Projects() {
 
       <div className="project-grid">
         {projects.map((project) => (
-          <Link key={project.slug} to={`/portfolio/${project.slug}`} className="project-card">
-            {project.thumbnail ? (
-              <img className="project-thumb" src={project.thumbnail} alt="" />
-            ) : (
-              <div className="project-thumb placeholder">{project.title}</div>
-            )}
-            <div className="project-card-body">
-              <h2>{project.title}</h2>
-              <span className="status">{project.status}</span>
-              <p>{project.description}</p>
-            </div>
-          </Link>
+          <ProjectCard key={project.slug} project={project} />
         ))}
       </div>
     </section>
