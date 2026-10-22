@@ -1,0 +1,30 @@
+#resume {
+  padding: 0 24px 48px;
+  @media (max-width: 1024px) {
+    padding: 0 16px 32px;
+  }
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.resume-frame {
+  display: block;
+  width: 100%;
+  max-width: 860px;
+  height: 85svh;
+  margin: 24px auto 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+
+  /* Phones don't show PDFs inline; the buttons above are the way to read it there */
+  @media (max-width: 700px) {
+    display: none;
+  }
+}

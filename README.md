@@ -26,6 +26,8 @@ npm run dev
   ```bash
   ffmpeg -i raw.mp4 -t 5 -an -vf "scale=640:480:force_original_aspect_ratio=increase,crop=640:480,fps=24" -c:v libx264 -crf 28 -pix_fmt yuv420p -movflags +faststart public/previews/<slug>.mp4
   ```
+- **Gallery photos:** copy photos into `photos-original/` (create it; it's gitignored, so your full-size originals stay on your computer), then run `npm run photos`. That writes a 1600px version and a square thumbnail of each (WebP) into `public/gallery/`, strips location and camera data, and rewrites `src/data/gallery.generated.json`, newest first. Photos with no date in their metadata (screenshots, photos saved from messaging apps) are listed last without a date; give one a date in the `dates` map in `src/data/gallery.ts`. Commit `public/gallery/` and the JSON, then deploy. Add or delete photos in `photos-original/` and run it again; deleting an original removes its published copy. Photos are `.jpg`, `.png`, `.webp`, `.avif`, or `.tiff` (export iPhone HEIC photos as JPG first). For an optional caption, add a line to `captions` in `src/data/gallery.ts`, keyed by the photo's id (its file name, lowercased, with dashes; the script prints each one).
+- **Resume:** replace `public/resume.pdf` and deploy. The Resume page embeds it and offers a download button. It's a public file, so leave off anything you don't want public (a phone number or home address, for example).
 
 ## Deploying
 

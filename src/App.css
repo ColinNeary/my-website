@@ -52,7 +52,9 @@ main {
   @media (max-width: 600px) {
     order: 1;
     width: 100%;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 6px 16px;
   }
 
   a {

@@ -25,3 +25,6 @@ dist-ssr
 
 # Game builds are large and re-exported often; they're uploaded by deploy.mjs instead
 public/games/
+
+# Full-size originals for the gallery; `npm run photos` makes the web-sized copies in public/gallery/
+photos-original/

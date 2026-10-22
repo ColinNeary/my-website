@@ -4,7 +4,9 @@ import ThemeMenu from './ThemeMenu'
 const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'Projects', to: '/portfolio' },
+  { label: 'Gallery', to: '/gallery' },
   { label: 'Weeklies', to: '/weeklies' },
+  { label: 'Resume', to: '/resume' },
 ]
 
 function Header() {
