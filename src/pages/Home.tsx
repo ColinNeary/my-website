@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { usePageTitle } from '../usePageTitle'
 
 function Home() {
+  usePageTitle()
   const [count, setCount] = useState(0)
 
   const handleClick = async () => {

@@ -1,6 +1,7 @@
 import { lazy, Suspense, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { projects } from '../data/projects'
+import { usePageTitle } from '../usePageTitle'
 import './Projects.css'
 
 // Loaded only when a project page needs it, so the demo's code isn't in everyone's first download
@@ -10,6 +11,7 @@ function Project() {
   const { slug } = useParams()
   const project = projects.find((p) => p.slug === slug)
   const frameRef = useRef<HTMLIFrameElement>(null)
+  usePageTitle(project ? project.title : 'Project not found', { noindex: !project })
 
   if (!project) {
     return (

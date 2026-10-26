@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { usePageTitle } from '../usePageTitle'
 import './Resume.css'
 
 // Replace public/resume.pdf to update it. The download button saves it under the second name.
@@ -6,6 +7,7 @@ const RESUME_URL = '/resume.pdf'
 const DOWNLOAD_NAME = 'Colin-Neary-Resume.pdf'
 
 function Resume() {
+  usePageTitle('Resume')
   // null while checking. The host answers any missing file with the home page (status 200), so check the
   // content type instead of the status to tell whether the PDF is really there.
   const [available, setAvailable] = useState<boolean | null>(null)

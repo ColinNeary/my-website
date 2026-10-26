@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { photos } from '../data/gallery'
+import { usePageTitle } from '../usePageTitle'
 import './Gallery.css'
 
 function formatDate(date: string) {
@@ -12,6 +13,7 @@ function formatDate(date: string) {
 }
 
 function Gallery() {
+  usePageTitle('Gallery')
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const dialogRef = useRef<HTMLDialogElement>(null)
 

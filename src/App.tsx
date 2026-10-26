@@ -8,6 +8,7 @@ import Project from './pages/Project'
 import Weeklies from './pages/Weeklies'
 import Gallery from './pages/Gallery'
 import Resume from './pages/Resume'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/weeklies" element={<Weeklies />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 

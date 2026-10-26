@@ -1,4 +1,5 @@
 import { weeklies, type WeeklyEntry } from '../data/weeklies'
+import { usePageTitle } from '../usePageTitle'
 import './Weeklies.css'
 
 // Parse as local time so the date doesn't shift a day in US timezones
@@ -74,6 +75,7 @@ function WeekPicks({ week, lazy }: { week: WeeklyEntry; lazy?: boolean }) {
 }
 
 function Weeklies() {
+  usePageTitle('Weeklies')
   const [current, ...previous] = weeklies
 
   return (
