@@ -84,6 +84,12 @@
     "date": null
   },
   {
+    "id": "church-altar",
+    "width": 1200,
+    "height": 1600,
+    "date": null
+  },
+  {
     "id": "img-0332",
     "width": 1202,
     "height": 1600,
@@ -111,6 +117,24 @@
     "id": "img-1973",
     "width": 828,
     "height": 923,
+    "date": null
+  },
+  {
+    "id": "instax-polaroid",
+    "width": 1200,
+    "height": 1600,
+    "date": null
+  },
+  {
+    "id": "photo-booth-strip-1",
+    "width": 1200,
+    "height": 1600,
+    "date": null
+  },
+  {
+    "id": "photo-booth-strip-2",
+    "width": 1200,
+    "height": 1600,
     "date": null
   }
 ]

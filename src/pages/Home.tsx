@@ -30,7 +30,7 @@ function Home() {
         </p>
         <div className="hero-actions">
           <Link to="/portfolio" className="button primary">View projects</Link>
-          <Link to="/weeklies" className="button">This week's picks</Link>
+          <Link to="/weeklies" className="button">Watch videos</Link>
         </div>
       </section>
 
