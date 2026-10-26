@@ -4,6 +4,12 @@ export interface ControlHint {
   action: string
 }
 
+// A titled list of those, e.g. "Dev controls", or one list per playable character
+export interface ControlGroup {
+  title: string
+  hints: ControlHint[]
+}
+
 // Everything on the Projects page: games, software, anything else. Each entry becomes a card on /portfolio
 // and its own page at /portfolio/<slug>. (The URL is still /portfolio so older links keep working.)
 export interface Project {
@@ -29,8 +35,9 @@ export interface Project {
   screenshots?: string[]
   // An interactive demo built into the site, shown above the description (see src/demos/)
   demo?: 'text-generator'
-  // A titled list of keys and what they do, shown under the description (e.g. a game's dev shortcuts)
-  controls?: { title: string; hints: ControlHint[] }
+  // One or more titled lists of keys and what they do, shown under the description in order
+  // (e.g. a game's dev shortcuts, or the controls for each playable character)
+  controls?: ControlGroup[]
 }
 
 export const projects: Project[] = [
@@ -41,6 +48,31 @@ export const projects: Project[] = [
     status: 'Alpha, discontinued',
     buildUrl: '/games/skribble-n-skram/index.html',
     thumbnail: '/images/skribble-n-skram.png',
+    controls: [
+      {
+        title: 'General controls',
+        hints: [{ key: 'Esc', action: 'Pauses' }],
+      },
+      {
+        title: 'Skribbla controls',
+        hints: [
+          { key: 'A', action: 'Moves left' },
+          { key: 'D', action: 'Moves right' },
+          { key: 'Left mouse', action: 'Draws' },
+          { key: 'Right mouse', action: 'Transformation attack' },
+          { key: 'Space', action: 'Submits all drawings' },
+        ],
+      },
+      {
+        title: 'Skramma controls',
+        hints: [
+          { key: 'WASD', action: 'Moves' },
+          { key: 'Left mouse', action: 'Shoots' },
+          { key: 'Right mouse', action: 'Melee attack' },
+          { key: 'Shift', action: 'Dashes' },
+        ],
+      },
+    ],
   },
   {
     slug: 'cat-ball',
@@ -49,16 +81,26 @@ export const projects: Project[] = [
     status: 'Finished alpha',
     buildUrl: '/games/cat-ball/index.html',
     thumbnail: '/images/cat-ball.png',
-    controls: {
-      title: 'Dev controls',
-      hints: [
-        { key: '1', action: 'Adds 5 seconds' },
-        { key: '2', action: 'Skips to the shop' },
-        { key: '3', action: 'Controls the cat ball (hold)' },
-        { key: '5', action: 'Adds 5 coins' },
-        { key: 'Space', action: 'Skips the intro' },
-      ],
-    },
+    controls: [
+      {
+        title: 'General controls',
+        hints: [
+          { key: 'Left mouse', action: 'Left flipper' },
+          { key: 'Right mouse', action: 'Right flipper' },
+          { key: 'Esc', action: 'Pauses' },
+        ],
+      },
+      {
+        title: 'Dev controls',
+        hints: [
+          { key: '1', action: 'Adds 10 seconds' },
+          { key: '2', action: 'Skips to the shop' },
+          { key: '3', action: 'Controls the cat ball (hold)' },
+          { key: '5', action: 'Adds 5 coins' },
+          { key: 'Space', action: 'Skips the intro' },
+        ],
+      },
+    ],
   },
   {
     slug: 'text-generator-ai',
@@ -67,7 +109,6 @@ export const projects: Project[] = [
     status: 'Finished',
     kind: 'software',
     thumbnail: '/images/text-generator-ai.png',
-    preview: '/previews/hover-test.webm', // TEMPORARY: hover-logic test, removed right after
     tech: ['Java', 'JavaFX', 'MySQL', 'Maven', 'Python'],
     demo: 'text-generator',
   },

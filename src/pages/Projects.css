@@ -129,10 +129,16 @@
   font-size: 20px;
 }
 
-.project-about {
+.project-about,
+.project-controls-section {
   text-align: left;
   max-width: 720px;
   margin: 0 auto;
+}
+
+/* The Fullscreen button's own bottom margin (from the home page counter) just adds gap below it here */
+#project .counter {
+  margin-bottom: 0;
 }
 
 .tech-list {
@@ -179,10 +185,25 @@
   font-size: 16px;
 }
 
+/* "Controls" shares About's left-aligned column. A bit closer to the game than a normal h2 sits. */
+.project-controls-section h2 {
+  margin-top: 16px;
+}
+
+/* A project's control lists side by side in that column; they stack on narrow screens */
+.project-controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px 24px;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
+}
+
 /* A list of keys and what they do; each key is drawn as a small key cap */
 .project-controls {
-  margin-top: 20px;
-
   h3 {
     margin: 0 0 10px;
     font-size: 16px;
@@ -190,21 +211,23 @@
     color: var(--text-h);
   }
 
+  /* Keys sit right-aligned in a column as wide as the longest key in the list ("Right mouse" needs more
+     room than "A"), flush against their descriptions, and every description is left-aligned from the
+     same x position. Each li joins its list's columns (subgrid) so the rows line up with each other. */
   ul {
     display: grid;
-    gap: 8px;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 12px;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  /* Keys sit right-aligned in a fixed-width column, flush against their descriptions,
-     and every description is left-aligned from the same x position */
   li {
     display: grid;
-    grid-template-columns: 4.5em 1fr;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
     align-items: center;
-    gap: 12px;
   }
 
   kbd {
